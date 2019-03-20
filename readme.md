@@ -42,7 +42,19 @@ var_dump($info);
 | pdd.ddk.mall.goods.list.get (查询店铺商品)     | \$client->goods->mall() |
 | pdd.ddk.goods.detail (多多进宝商品详情查询)     | \$client->goods->detail() |
 | pdd.ddk.goods.search (多多进宝商品查询搜索)     | \$client->goods->search() |
-| pdd.ddk.goods.search (多多进宝商品查询搜索)     | \$client->goods->search() |
+| pdd.ddk.goods.direct (查询定向推广商品)     | \$client->goods->direct() |
+| pdd.ddk.goods.top (获取热销商品列表)     | \$client->goods->top() |
+| pdd.ddk.goods.promotion.url.generate (多多进宝推广链接生成)     | \$client->link->createCpsUrl() |
+| pdd.ddk.rp.prom.url.generate (生成红包推广链接)     | \$client->link->createRedbaoUrl() |
+| pdd.ddk.theme.prom.url.generate (多多进宝主题推广链接生成)     | \$client->link->createThemeUrl() |
+| pdd.ddk.goods.zs.unit.url.gen (将其他推广者的推广链接转换成自己的)     | \$client->link->covertOtherToMyPidUrl() |
+| pdd.ddk.goods.pid.query (查询已经生成的推广位信息)     | \$client->promotion->queryPid() |
+| pdd.ddk.goods.pid.generate (创建多多进宝推广位)     | \$client->promotion->createPid() |
+| pdd.ddk.order.list.increment.get (查询推广订单)     | \$client->promotion->queryOrder() |
+| pdd.ddk.order.detail.get (查询订单详情)     | \$client->promotion->queryOrderDetail() |
+| pdd.ddk.theme.list.get (多多进宝主题列表查询)     | \$client->theme->lists() |
+| pdd.ddk.theme.goods.search (多多进宝主题商品查询)     | \$client->theme->getListsDetail() |
+
 ## License
 
 MIT

@@ -68,7 +68,7 @@ class Promotion extends pddUnionGateWay
             'page' => $page,
             'page_size' => $page_size
         ];
-        return $this->send('pdd.ddk.goods.pid.generate', $params);
+        return $this->send('pdd.ddk.order.list.increment.get', $params);
     }
 
     /**
