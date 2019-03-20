@@ -1,0 +1,30 @@
+{
+  "name": "yumufeng/pdd-union-sdk",
+  "version": "1.0.0",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "yumufeng",
+      "email": "admin@yumufeng.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "classmap": [
+    ],
+    "psr-4": {
+      "pddUnionSdk\\": "src"
+    },
+    "files": [
+      "src/Tools/Helpers.php"
+    ]
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.laravel-china.org"
+    }
+  }
+}
