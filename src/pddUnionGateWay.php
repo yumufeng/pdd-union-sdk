@@ -37,6 +37,11 @@ class pddUnionGateWay
     protected $ddkId;
 
     /**
+     * 是否强制使用curl，不自动适配swoole协程客户端
+     * @var bool
+     */
+    private $isCurl = false;
+    /**
      * pdd联盟实例
      * @var pddUnionFactory
      */
@@ -47,6 +52,7 @@ class pddUnionGateWay
         $this->appId = $config['appId'];
         $this->appSk = $config['appSk'];
         $this->ddkId = $config['ddkId'];
+        $this->isCurl = isset($config['isCurl']) && ($config['isCurl'] == true) ? true : false;
         $this->pddUnionFactory = $pddUnionFactory;
     }
 
@@ -68,7 +74,7 @@ class pddUnionGateWay
         $params['timestamp'] = strval(time());
         $params['sign'] = $this->signature($params);
         try {
-            $response = \curl_post(self::URL, $params);
+            $response = $this->isCurl == false ? \curl_post(self::URL, $params) : \fpm_curl_post(self::URL, $params);
             $info = strtolower($data_type) == 'json' ? json_decode($response, true) : $response;
             if (isset($info['error_response'])) {
                 $this->pddUnionFactory->setError($info['error_response']['error_msg']);
