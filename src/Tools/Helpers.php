@@ -65,4 +65,5 @@ function fpm_curl_post($url, $post_data, $header = [])
     \curl_setopt($ch, CURLOPT_TIMEOUT, 15);
     $output = curl_exec($ch);
     curl_close($ch);
+    return $output;
 }
