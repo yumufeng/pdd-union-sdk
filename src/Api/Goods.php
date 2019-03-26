@@ -13,6 +13,26 @@ use pddUnionSdk\pddUnionGateWay;
 class Goods extends pddUnionGateWay
 {
     /**
+     * 运营频道商品查询
+     * @param $p_id
+     * @param int $channel_type
+     * @param int $page
+     * @param int $pageSize
+     * @return mixed|string
+     * @throws \Exception
+     */
+    public function recommend($channel_type = 1, $page = 1, $pageSize = 100, $p_id = '')
+    {
+        $params = [
+            'pid' => $p_id,
+            'offset' => ($page - 1) * $pageSize,
+            'limit' => $pageSize,
+            'channel_type' => $channel_type
+        ];
+        return $this->send('pdd.ddk.goods.recommend.get', $params);
+    }
+
+    /**
      * @api 查询店铺商品
      * @param $mall_id
      * @param int $page_number
@@ -87,7 +107,7 @@ class Goods extends pddUnionGateWay
      * @return mixed|string
      * @throws \Exception
      */
-    public function top($p_id, $page = 1, $pageSize = 100, $sort_type = 1)
+    public function top($p_id = '', $page = 1, $pageSize = 100, $sort_type = 1)
     {
         $params = [
             'p_id' => $p_id,
