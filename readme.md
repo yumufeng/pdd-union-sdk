@@ -21,8 +21,9 @@ header("content-type: application/json;charset=UTF-8");
 $config = [
     'appId' => '', // 拼多多开放平台 client_id
     'appSk' => '', // 拼多多开放平台 client_secret
-    'ddkId' => '', // 多多客ID
-    'isCurl' => true // 是否强制使用curl 不自动适配swoole 协程客户端 可选参数，不启动自动适配swoole 协程
+    'ddkId' => '', // 多多客ID,
+    'pid' => '',
+    'isCurl' => true // 是否强制使用curl ，设置false为强制使用curl，系统将会自动适配swoole 协程
 ];
 $pdd = new \pddUnionSdk\pddUnionFactory($config);
 

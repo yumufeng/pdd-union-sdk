@@ -29,6 +29,9 @@ class Goods extends pddUnionGateWay
             'limit' => $pageSize,
             'channel_type' => $channel_type
         ];
+        if (empty($p_id)) {
+            $params['pid'] = $this->pid;
+        }
         return $this->send('pdd.ddk.goods.recommend.get', $params);
     }
 
@@ -115,6 +118,9 @@ class Goods extends pddUnionGateWay
             'limit' => $pageSize,
             'sort_type' => $sort_type
         ];
+        if (empty($p_id)) {
+            $params['p_id'] = $this->pid;
+        }
         return $this->send('pdd.ddk.top.goods.list.query', $params);
     }
 }

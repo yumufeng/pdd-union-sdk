@@ -28,7 +28,7 @@ class Link extends pddUnionGateWay
      * @return mixed|string
      * @throws \Exception
      */
-    public function createCpsUrl($p_id, string $goods_id, $short = false)
+    public function createCpsUrl($p_id = '', string $goods_id, $short = false)
     {
         $params = [
             'p_id' => $p_id,
@@ -37,6 +37,9 @@ class Link extends pddUnionGateWay
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
         ];
+        if (empty($p_id)) {
+            $params['p_id'] = $this->pid;
+        }
         $result = $this->send('pdd.ddk.goods.promotion.url.generate', $params);
         if (!$result) {
             return $result;
@@ -51,15 +54,17 @@ class Link extends pddUnionGateWay
      * @return mixed|string
      * @throws \Exception
      */
-    public function createRedbaoUrl($p_id, $short = false)
+    public function createRedbaoUrl($p_id = '', $short = false)
     {
         $params = [
-            'p_id' => $p_id,
             'p_id_list' => [$p_id],
             'generate_short_url' => $short,
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
         ];
+        if (empty($p_id)) {
+            $params['p_id_list'] = [$this->pid];
+        }
         $result = $this->send('pdd.ddk.rp.prom.url.generate', $params);
         if (!$result) {
             return $result;
@@ -69,8 +74,13 @@ class Link extends pddUnionGateWay
 
     /**
      * @api 多多进宝主题推广链接生成
+     * @param string $pid
+     * @param $theme_id_list
+     * @param bool $short
+     * @return mixed|string
+     * @throws \Exception
      */
-    public function createThemeUrl($pid, $theme_id_list, $short = false)
+    public function createThemeUrl($pid = '', $theme_id_list, $short = false)
     {
         $params = [
             'pid' => $pid,
@@ -80,6 +90,9 @@ class Link extends pddUnionGateWay
             'generate_we_app' => true,
             'we_app_web_view_short_url' => true
         ];
+        if (empty($pid)) {
+            $params['pid'] = $this->pid;
+        }
         $result = $this->send('pdd.ddk.theme.prom.url.generate', $params);
         if (!$result) {
             return $result;
@@ -94,12 +107,15 @@ class Link extends pddUnionGateWay
      * @return mixed|string
      * @throws \Exception
      */
-    public function covertOtherToMyPidUrl($pid, $source_url)
+    public function covertOtherToMyPidUrl($pid = '', $source_url)
     {
         $params = [
             'pid' => $pid,
             'source_url' => $source_url
         ];
+        if (empty($pid)) {
+            $params['pid'] = $this->pid;
+        }
         return $this->send('pdd.ddk.goods.zs.unit.url.gen', $params);
     }
 

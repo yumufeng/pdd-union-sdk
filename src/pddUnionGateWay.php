@@ -37,6 +37,12 @@ class pddUnionGateWay
     protected $ddkId;
 
     /**
+     * 默认的PID
+     * @var
+     */
+    protected $pid;
+
+    /**
      * 是否强制使用curl，不自动适配swoole协程客户端
      * @var bool
      */
@@ -52,6 +58,7 @@ class pddUnionGateWay
         $this->appId = $config['appId'];
         $this->appSk = $config['appSk'];
         $this->ddkId = $config['ddkId'];
+        $this->pid = isset($config['pid']) ? $config['pid'] : '';
         $this->isCurl = isset($config['isCurl']) && ($config['isCurl'] == true) ? true : false;
         $this->pddUnionFactory = $pddUnionFactory;
     }
