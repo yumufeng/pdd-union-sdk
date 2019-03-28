@@ -8,6 +8,8 @@
 
 namespace pddUnionSdk;
 
+use pddUnionSdk\Tools\Helpers;
+
 /**
  * 多多客网关
  * Class pddUnionGateWay
@@ -81,7 +83,7 @@ class pddUnionGateWay
         $params['timestamp'] = strval(time());
         $params['sign'] = $this->signature($params);
         try {
-            $response = $this->isCurl == false ? \curl_post(self::URL, $params) : \fpm_curl_post(self::URL, $params);
+            $response = $this->isCurl == false ? Helpers::curl_post(self::URL, $params): Helpers::fpm_curl_post(self::URL, $params);
             $info = strtolower($data_type) == 'json' ? json_decode($response, true) : $response;
             if (isset($info['error_response'])) {
                 $this->pddUnionFactory->setError($info['error_response']['error_msg']);

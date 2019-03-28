@@ -15,10 +15,7 @@
     ],
     "psr-4": {
       "pddUnionSdk\\": "src"
-    },
-    "files": [
-      "src/Tools/Helpers.php"
-    ]
+    }
   },
   "repositories": {
     "packagist": {
