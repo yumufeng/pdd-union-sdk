@@ -2,7 +2,7 @@
 
 拼多多联盟SDK，多多客工具箱
 
-PHP =>7.0
+PHP =>7.1
 
 `composer require yumufeng/pdd-union-sdk`
 
@@ -43,6 +43,7 @@ var_dump($info);
 | --------   | ---- |
 | pdd.ddk.mall.goods.list.get (查询店铺商品)     | \$client->goods->mall() |
 | pdd.ddk.goods.detail (多多进宝商品详情查询)     | \$client->goods->detail() |
+| pdd.goods.cats.get (商品标准类目接口)     | \$client->goods->category() |
 | pdd.ddk.goods.search (多多进宝商品查询搜索)     | \$client->goods->search() |
 | pdd.ddk.goods.direct (查询定向推广商品)     | \$client->goods->direct() |
 | pdd.ddk.goods.top (获取热销商品列表)     | \$client->goods->top() |

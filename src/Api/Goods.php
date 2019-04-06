@@ -36,12 +36,27 @@ class Goods extends pddUnionGateWay
     }
 
     /**
-     * @api 查询店铺商品
+     * 商品标准类目接口
+     * @link https://open.pinduoduo.com/#/apidocument/port?id=pdd.goods.cats.get
+     * @param int $parent_cat_id
+     * @return mixed|string
+     * @throws \Exception
+     */
+    public function category($parent_cat_id = 0)
+    {
+        $params = [
+            'parent_cat_id' => $parent_cat_id
+        ];
+        return $this->send('pdd.goods.cats.get', $params);
+    }
+
+    /**
      * @param $mall_id
      * @param int $page_number
      * @param int $page_size
      * @return mixed|string
      * @throws \Exception
+     * @api 查询店铺商品
      */
     public function mall($mall_id, $page_number = 1, $page_size = 20)
     {
@@ -55,10 +70,10 @@ class Goods extends pddUnionGateWay
     }
 
     /**
-     * @api 多多进宝商品详情查询
      * @param $skuID
      * @return mixed|string
      * @throws \Exception
+     * @api 多多进宝商品详情查询
      */
     public function detail($skuID)
     {
@@ -76,10 +91,10 @@ class Goods extends pddUnionGateWay
 
     /**
      * 多多进宝商品查询
-     * @link
      * @param array $params
      * @return mixed|string
      * @throws \Exception
+     * @link
      */
     public function search(array $params = [])
     {
