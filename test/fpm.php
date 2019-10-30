@@ -14,7 +14,7 @@ header("content-type: application/json;charset=UTF-8");
 $config = [
     'appId' => '',
     'appSk' => '',
-    'ddkId' => ''
+    'ddkId' => '1628880'
 ];
 //'1628880_31417969', true
 $pdd = new \pddUnionSdk\pddUnionFactory($config);

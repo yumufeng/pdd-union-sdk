@@ -8,7 +8,8 @@
     }
   ],
   "require": {
-    "php": ">=7.0"
+    "php": ">=7.0",
+    "yumufeng/curl-swoole": "^1.0"
   },
   "autoload": {
     "classmap": [
@@ -20,7 +21,7 @@
   "repositories": {
     "packagist": {
       "type": "composer",
-      "url": "https://packagist.laravel-china.org"
+      "url": "https://mirrors.aliyun.com/composer/"
     }
   }
 }

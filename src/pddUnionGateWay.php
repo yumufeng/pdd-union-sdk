@@ -9,6 +9,7 @@
 namespace pddUnionSdk;
 
 use pddUnionSdk\Tools\Helpers;
+use yumufeng\curl\Curl;
 
 /**
  * 多多客网关
@@ -83,7 +84,7 @@ class pddUnionGateWay
         $params['timestamp'] = strval(time());
         $params['sign'] = $this->signature($params);
         try {
-            $response = $this->isCurl == false ? Helpers::curl_post(self::URL, $params): Helpers::fpm_curl_post(self::URL, $params);
+            $response = $this->isCurl == false ? Curl::curl_post(self::URL, $params): Curl::fpm_curl_post(self::URL, $params);
             $info = strtolower($data_type) == 'json' ? json_decode($response, true) : $response;
             if (isset($info['error_response'])) {
                 $this->pddUnionFactory->setError($info['error_response']['error_msg']);

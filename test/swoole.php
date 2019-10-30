@@ -44,8 +44,7 @@ class  swooleDemo
         if ($info === false) {
             var_dump($pdd->getError());
         }
-        var_dump($info);
-        $response->end('index');
+        $response->end(json_encode($info));
     }
 
 }
