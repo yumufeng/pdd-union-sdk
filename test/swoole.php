@@ -35,12 +35,12 @@ class  swooleDemo
     {
 
         $config = [
-            'appId' => '',
+            'appId' => '58719086ed034a79a0b749301a93df88',
             'appSk' => '',
-            'ddkId' => ''
+            'ddkId' => '1628880'
         ];
         $pdd = new \pddUnionSdk\pddUnionFactory($config);
-        $info = $pdd->goods->mall('918323727');
+        $info = $pdd->goods->opt();
         if ($info === false) {
             var_dump($pdd->getError());
         }

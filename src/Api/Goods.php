@@ -51,6 +51,20 @@ class Goods extends pddUnionGateWay
     }
 
     /**
+     * pdd.goods.opt.get（查询商品标签列表）
+     * @param int $parent_cat_id
+     * @return mixed|string
+     * @throws \Exception
+     */
+    public function opt($parent_cat_id = 0)
+    {
+        $params = [
+            'parent_opt_id' => $parent_cat_id
+        ];
+        return $this->send('pdd.goods.opt.get', $params);
+    }
+
+    /**
      * @param $mall_id
      * @param int $page_number
      * @param int $page_size
