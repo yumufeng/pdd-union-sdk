@@ -36,6 +36,9 @@ class Link extends pddUnionGateWay
             'generate_short_url' => $short,
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
+            'generate_schema_url' => true,
+            'generate_qq_app' => true,
+            'generate_weiboapp_webview' => true
         ];
         if (empty($p_id)) {
             $params['p_id'] = $this->pid;
@@ -61,6 +64,9 @@ class Link extends pddUnionGateWay
             'generate_short_url' => $short,
             'generate_weapp_webview' => true,
             'generate_we_app' => true,
+            'generate_schema_url' => true,
+            'generate_qq_app' => true,
+            'generate_weiboapp_webview' => true
         ];
         if (empty($p_id)) {
             $params['p_id_list'] = [$this->pid];
