@@ -8,7 +8,6 @@
 
 namespace pddUnionSdk;
 
-use pddUnionSdk\Tools\Helpers;
 use yumufeng\curl\Curl;
 
 /**
