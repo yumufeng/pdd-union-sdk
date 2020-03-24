@@ -14,6 +14,7 @@ use pddUnionSdk\pddUnionGateWay;
 /**
  * 拼多多链接处理
  * Class Link
+ *
  * @package pddUnionSdk\Api
  */
 class Link extends pddUnionGateWay
@@ -21,14 +22,15 @@ class Link extends pddUnionGateWay
 
 
     /**
-     * @api 多多进宝推广链接生成
-     * @param $p_id
+     * @param string $p_id
      * @param string $goods_id
      * @param bool $short
+     * @param array $ext
      * @return mixed|string
      * @throws \Exception
+     * @api 多多进宝推广链接生成
      */
-    public function createCpsUrl($p_id = '', string $goods_id, $short = false)
+    public function createCpsUrl($p_id = '', string $goods_id, $short = false, $ext = [])
     {
         $params = [
             'p_id' => $p_id,
@@ -43,6 +45,9 @@ class Link extends pddUnionGateWay
         if (empty($p_id)) {
             $params['p_id'] = $this->pid;
         }
+        foreach (array_filter($ext) as $k => $v) {
+            $params[$k] = $v;
+        }
         $result = $this->send('pdd.ddk.goods.promotion.url.generate', $params);
         if (!$result) {
             return $result;
@@ -52,12 +57,14 @@ class Link extends pddUnionGateWay
 
     /**
      * 生成红包推广链接
-     * @param $p_id
+     *
+     * @param string $p_id
      * @param bool $short
+     * @param array $ext
      * @return mixed|string
      * @throws \Exception
      */
-    public function createRedbaoUrl($p_id = '', $short = false)
+    public function createRedbaoUrl($p_id = '', $short = false, $ext = [])
     {
         $params = [
             'p_id_list' => [$p_id],
@@ -71,6 +78,9 @@ class Link extends pddUnionGateWay
         if (empty($p_id)) {
             $params['p_id_list'] = [$this->pid];
         }
+        foreach (array_filter($ext) as $k => $v) {
+            $params[$k] = $v;
+        }
         $result = $this->send('pdd.ddk.rp.prom.url.generate', $params);
         if (!$result) {
             return $result;
@@ -79,14 +89,15 @@ class Link extends pddUnionGateWay
     }
 
     /**
-     * @api 多多进宝主题推广链接生成
      * @param string $pid
      * @param $theme_id_list
      * @param bool $short
+     * @param array $ext
      * @return mixed|string
      * @throws \Exception
+     * @api 多多进宝主题推广链接生成
      */
-    public function createThemeUrl($pid = '', $theme_id_list, $short = false)
+    public function createThemeUrl($pid = '', $theme_id_list, $short = false, $ext = [])
     {
         $params = [
             'pid' => $pid,
@@ -99,6 +110,9 @@ class Link extends pddUnionGateWay
         if (empty($pid)) {
             $params['pid'] = $this->pid;
         }
+        foreach (array_filter($ext) as $k => $v) {
+            $params[$k] = $v;
+        }
         $result = $this->send('pdd.ddk.theme.prom.url.generate', $params);
         if (!$result) {
             return $result;
@@ -107,13 +121,14 @@ class Link extends pddUnionGateWay
     }
 
     /**
-     * @api 本功能适用于采集群等场景。将其他推广者的推广链接转换成自己的；通过此api，可以将他人的招商推广链接，转换成自己的招商推广链接。
-     * @param $pid
+     * @param string $pid
      * @param $source_url
+     * @param array $ext
      * @return mixed|string
      * @throws \Exception
+     * @api 本功能适用于采集群等场景。将其他推广者的推广链接转换成自己的；通过此api，可以将他人的招商推广链接，转换成自己的招商推广链接。
      */
-    public function covertOtherToMyPidUrl($pid = '', $source_url)
+    public function covertOtherToMyPidUrl($pid = '', $source_url, $ext = [])
     {
         $params = [
             'pid' => $pid,
@@ -121,6 +136,9 @@ class Link extends pddUnionGateWay
         ];
         if (empty($pid)) {
             $params['pid'] = $this->pid;
+        }
+        foreach (array_filter($ext) as $k => $v) {
+            $params[$k] = $v;
         }
         return $this->send('pdd.ddk.goods.zs.unit.url.gen', $params);
     }

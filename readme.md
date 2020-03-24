@@ -10,6 +10,10 @@ PHP =>7.1
 
 ```./configure --enable-coroutine --enable-openssl```
 
+### fork说明
+
+基于该包的基础上增加额外入参的参数
+
 ### 使用示例
 
 ```php
